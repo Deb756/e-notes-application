@@ -1,0 +1,93 @@
+<%@page import="com.org.dto.User"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Home Page</title>
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+	crossorigin="anonymous">
+</head>
+<body>
+	<nav class="navbar navbar-expand-lg bg-body-tertiary">
+		<div class="container-fluid">
+			<a class="navbar-brand" href="#">Navbar</a>
+			<button class="navbar-toggler" type="button"
+				data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+				aria-controls="navbarSupportedContent" aria-expanded="false"
+				aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarSupportedContent">
+				<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+					<li class="nav-item"><a class="nav-link active"
+						aria-current="page" href="#">Home</a></li>
+					<li class="nav-item"><a class="nav-link" href="#">Link</a></li>
+					<li class="nav-item dropdown"><a
+						class="nav-link dropdown-toggle" href="#" role="button"
+						data-bs-toggle="dropdown" aria-expanded="false"> Dropdown </a>
+						<ul class="dropdown-menu">
+							<li><a class="dropdown-item" href="#">Action</a></li>
+							<li><a class="dropdown-item" href="#">Another action</a></li>
+							<li><hr class="dropdown-divider"></li>
+							<li><a class="dropdown-item" href="#">Something else
+									here</a></li>
+						</ul></li>
+					<li class="nav-item"><a class="nav-link disabled"
+						aria-disabled="true">Disabled</a></li>
+				</ul>
+				<form class="d-flex" role="search">
+					<input class="form-control me-2" type="search" placeholder="Search"
+						aria-label="Search">
+					<button class="btn btn-outline-success" type="submit">Search</button>
+				</form>
+			</div>
+		</div>
+	</nav>
+	<%
+	User us = (User) session.getAttribute("logedUser");
+	String msg = (String) session.getAttribute("success");
+	if (us != null) {
+	%>
+	<h2>Welcome to Home dude</h2>
+	<%
+	}
+	if(msg != null)
+	{%>
+	<h3>Notes added Successfully</h3>
+	<%
+	}
+	%>
+	<div class="container mark my-3 p-3">
+		<form action="AddNote" class="" method="post">
+		   <h2 style="text-align: center;">Add Notes</h2>
+			<div class="mb-3">
+				<label for="inputEmail" class="form-label"
+					style="font-weight: bold;">Title</label> <input
+					type="text" class="form-control" id="inputEmail" name="title"
+					placeholder="Enter your title">
+			</div>
+
+			<div class="mb-3">
+				<label for="inputPassword" class="form-label"
+					style="font-weight: bold;">Description</label> <input
+					type="text" class="form-control" id="inputPassword"
+					name="description" placeholder="Enter your Notes">
+			</div>
+			<button type="submit" class="btn btn-primary">Add Note</button>
+		</form>
+	</div>
+</body>
+<script
+	src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+	integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+	crossorigin="anonymous"></script>
+<script
+	src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"
+	integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy"
+	crossorigin="anonymous"></script>
+</html>
